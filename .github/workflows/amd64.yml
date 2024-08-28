@@ -27,8 +27,8 @@ jobs:
 
     - name: Pull Docker Images and Package
       run: |
-        IMAGE_FILE_PREFIX="${DOCKER_IMAGE/\//_}"
-        IMAGE_FILE_PREFIX="${DOCKER_IMAGE/:/_}"
+        IMAGE_FILE_PREFIX="${DOCKER_IMAGE//\//_}"
+        IMAGE_FILE_PREFIX="${DOCKER_IMAGE//:/_}"
         IMAGE_FILE="${IMAGE_FILE_PREFIX}-amd64.tar"
         docker pull "${DOCKER_IMAGE}" --platform "linux/amd64"
         docker save "${DOCKER_IMAGE}" -o "${IMAGE_FILE}"
